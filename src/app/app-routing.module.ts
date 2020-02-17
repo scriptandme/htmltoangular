@@ -21,3 +21,6 @@ const routes: Routes = [
 	  Nos sirve para subir nuestra app a servidores donde no podamos configurar nuestro .htacces */
 })
 export class AppRoutingModule { }
+
+
+
