@@ -8,13 +8,24 @@ import { InfoPagina } from '../interfaces/info-page.interfaces';
 export class InfoPageService {
 
 	info: InfoPagina;
+	equipo: any[] = [];
 
 	constructor(private http:HttpClient) {
-		console.log("servicio up");
+		this.cargarInfo();
+		this.cargarEquipo();
+		}
+	   
+	private cargarInfo(){
 		this.http.get('assets/data/data.json')
 			.subscribe((resp: InfoPagina)=> {
-				this.info = resp;
-				console.log(this.info.email)
+				this.info = resp;				
 			})
-   	}
+	}
+
+	private cargarEquipo(){
+		this.http.get('https://angular-html-cl.firebaseio.com/equipo.json')
+			.subscribe((resp: any)=> {
+				this.equipo = resp;
+			})
+	}
 }
